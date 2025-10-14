@@ -19,7 +19,7 @@
 -->
 <html>
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" />
         <!--
         Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
             https://cordova.apache.org/docs/en/latest/
@@ -28,21 +28,61 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-        <meta name="color-scheme" content="light dark">
-        <link rel="stylesheet" href="css/index.css">
-        <title>Hello World</title>
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"
+        />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover" />
+        <meta name="color-scheme" content="light dark" />
+        <link rel="stylesheet" href="css/index.css" />
+        <title>Fidelidade Cordova App</title>
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+        <!-- Hidden deviceready indicator for Cordova -->
+        <div id="deviceready" class="deviceready-indicator">
+            <span class="event listening">Connecting to Device</span>
+            <span class="event received">Device is Ready</span>
+        </div>
+
+        <div class="main-container">
+            <header class="app-header">
+                <h1>Fidelidade Mobile App</h1>
+                <p class="subtitle">Powered by OutSystems Cordova Platform</p>
+                <div class="status-bar">
+                    <span class="status-label">Status:</span>
+                    <span id="status" class="status-value">Initializing...</span>
+                </div>
+            </header>
+
+            <main class="app-main">
+                <section class="button-section">
+                    <!-- 
+                        PREFERRED BUTTON PATTERN FOR PLUGIN TESTING:
+                        This is the recommended way to create buttons for testing plugin functionality.
+                        - Use descriptive IDs (check-availability-btn)
+                        - Apply consistent CSS classes (test-button)
+                        - Clear, action-oriented button text
+                        - Set up corresponding event listeners in JS
+                    -->
+                    <!-- <button id="check-availability-btn" class="test-button">Check Plugin Status</button> -->
+                </section>
+
+                <section class="log-section">
+                    <h3>App Logs</h3>
+                    <div id="log-output" class="log-area"></div>
+                    <button id="clear-log-btn" class="clear-button">Clear Logs</button>
+                </section>
+
+                <section class="info-section">
+                    <h4>Available Plugins</h4>
+                    <ul class="plugin-list">
+                        <li>cordova-plugin-app-review</li>
+                        <li>cordova-support-android-plugin</li>
+                    </ul>
+                </section>
+            </main>
         </div>
         <script src="cordova.js"></script>
         <script src="js/index.js"></script>
