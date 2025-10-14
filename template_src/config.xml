@@ -26,3 +26,4 @@
         <preference name="SwiftVersion" value="5" />
         <preference name="deployment-target" value="12.0" />
     </platform>
+</widget>
