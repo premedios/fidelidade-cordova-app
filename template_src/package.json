@@ -1,6 +1,6 @@
 {
-  "name": "$PACKAGE_NAME$",
-  "displayName": "$APP_NAME$",
+  "name": "pt.fidelidade.app",
+  "displayName": "Fidelidade Cordova Test App",
   "version": "1.0.0",
   "description": "A sample Apache Cordova application that responds to the deviceready event.",
   "main": "index.js",

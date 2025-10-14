@@ -3,17 +3,11 @@
   "version": "1.0.0",
   "description": "Fidelidade Cordova App Template with OutSystems platform support",
   "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/premedios/fidelidade-cordova-app.git"
-  },
+  "repository": "github:premedios/fidelidade-cordova-app.git",
+  "bugs": "https://github.com/premedios/fidelidade-cordova-app/issues",
   "keywords": [
     "cordova:template",
-    "ecosystem:cordova",
-    "cordova-template",
-    "template",
-    "fidelidade",
-    "outsystems"
+    "ecosystem:cordova"
   ],
   "author": "premedios",
   "license": "Apache-2.0",
