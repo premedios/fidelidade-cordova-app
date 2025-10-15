@@ -29,8 +29,11 @@ function onDeviceReady() {
 }
 
 function initializeApp() {
-    console.log('Fidelidade Cordova app initialized successfully');
-    log('Fidelidade Mobile App initialized');
+    console.log('Cordova app initialized successfully');
+    log('Cordova app initialized');
+    
+    // Load app name from config.xml
+    loadAppName();
     
     // Check Cordova platform info
     checkPlatformInfo();
@@ -41,6 +44,54 @@ function initializeApp() {
     // Update status
     document.getElementById('status').textContent = 'App is ready!';
     document.getElementById('status').style.color = '#28a745';
+}
+
+function loadAppName() {
+    // Try to get app name from cordova app info first
+    if (typeof cordova !== 'undefined' && cordova.getAppVersion) {
+        cordova.getAppVersion.getAppName().then(function(name) {
+            document.getElementById('app-name').textContent = name;
+            log(`App name loaded: ${name}`);
+        }).catch(function(error) {
+            // Fallback to reading config.xml
+            loadAppNameFromConfig();
+        });
+    } else {
+        // Fallback to reading config.xml
+        loadAppNameFromConfig();
+    }
+}
+
+function loadAppNameFromConfig() {
+    // Fetch and parse config.xml
+    fetch('config.xml')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Could not fetch config.xml');
+            }
+            return response.text();
+        })
+        .then(xmlText => {
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+            const nameElement = xmlDoc.getElementsByTagName('name')[0];
+            
+            if (nameElement && nameElement.textContent) {
+                const appName = nameElement.textContent.trim();
+                document.getElementById('app-name').textContent = appName;
+                log(`App name loaded from config.xml: ${appName}`);
+            } else {
+                // Fallback to default
+                document.getElementById('app-name').textContent = 'Cordova App';
+                log('⚠️ Could not find app name in config.xml, using default');
+            }
+        })
+        .catch(error => {
+            console.error('Error loading app name:', error);
+            // Fallback to default
+            document.getElementById('app-name').textContent = 'Cordova App';
+            log('⚠️ Error loading app name, using default');
+        });
 }
 
 function checkPlatformInfo() {
