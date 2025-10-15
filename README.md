@@ -1,16 +1,48 @@
 # Fidelidade Cordova App Template
 
-A comprehensive Cordova template with OutSystems platform support, pre-configured for iOS and Android development.
+[![NPM](https://img.shields.io/badge/template-cordova:template-blue)](https://www.npmjs.com/search?q=keywords:cordova%3Atemplate)
+
+A professional Cordova template following the official Apache Cordova template structure, with OutSystems platform support and modern UI components pre-configured for iOS and Android development.
 
 ## Features
 
+- ✅ **Official Template Structure**: Follows `cordova-app-hello-world` template conventions
 - ✅ **OutSystems Cordova Platforms**: Pre-configured with OutSystems forks for enhanced functionality
 - ✅ **iOS Swift 5 Support**: Ready for modern iOS development with deployment target iOS 12.0
 - ✅ **Android Release Ready**: Configured for Google Play Store deployment
 - ✅ **Modern UI**: Professional interface with Fidelidade branding and responsive design
-- ✅ **App Review Integration**: Built-in app review functionality with graceful fallbacks
+- ✅ **Plugin Testing Framework**: Example button patterns for testing plugin functionality
 - ✅ **Real-time Logging**: Live debugging interface with timestamp logging
-- ✅ **Easy Setup**: Works directly with `cordova create` command
+- ✅ **Cordova CLI Compatible**: Works seamlessly with `cordova create` command
+
+## Template Structure
+
+This template follows the official Apache Cordova template structure:
+
+```
+fidelidade-cordova-app/
+├── package.json          # Template metadata (with cordova:template keyword)
+├── index.js              # Entry point - points to template_src/
+├── README.md             # Template documentation
+└── template_src/         # Actual template files
+    ├── package.json      # Generated app's package.json
+    ├── config.xml        # Cordova config with $PACKAGE_NAME$ placeholders
+    ├── gitignore         # Becomes .gitignore in generated project
+    └── www/              # Web assets
+        ├── index.html    # Fidelidade-branded UI
+        ├── css/index.css # Modern responsive styling
+        ├── js/index.js   # App logic with plugin examples
+        └── img/logo.png  # Fidelidade logo asset
+```
+
+### Template Placeholders
+
+The template uses Cordova's standard placeholder system:
+
+- `$PACKAGE_NAME$` → Replaced with your app's package ID (e.g., `com.mycompany.myapp`)
+- `$APP_NAME$` → Replaced with your app's display name (e.g., `"My App"`)
+
+These placeholders are automatically replaced when using `cordova create` command.
 
 ## Quick Start
 
@@ -97,6 +129,41 @@ This template includes a modern, professional interface with:
 - **Dark Mode Support**: Automatic adaptation to system color schemes
 - **Cross-Platform**: Consistent experience on iOS and Android
 
+## Plugin Development
+
+The template includes an example of the preferred pattern for testing plugin functionality:
+
+```html
+<!-- 
+    PREFERRED BUTTON PATTERN FOR PLUGIN TESTING:
+    This is the recommended way to create buttons for testing plugin functionality.
+    - Use descriptive IDs (check-availability-btn)
+    - Apply consistent CSS classes (test-button)
+    - Clear, action-oriented button text
+    - Set up corresponding event listeners in JS
+-->
+<!-- <button id="check-availability-btn" class="test-button">Check Plugin Status</button> -->
+```
+
+### Adding Your Own Plugin Tests
+
+1. **Uncomment the example button** or create new ones following the same pattern
+2. **Add event listeners** in `www/js/index.js` following the existing examples
+3. **Use the logging system** with `log()` function for real-time debugging
+4. **Test graceful fallbacks** when plugins are not available
+
+## Customization
+
+### Branding
+- **Colors**: Update the gradient in `www/css/index.css` (currently Fidelidade blue)
+- **Logo**: Replace `www/img/logo.png` with your company logo
+- **App Name**: Automatically handled by `$APP_NAME$` placeholder
+
+### Configuration
+- **Platforms**: Modify `config.xml` for platform-specific settings
+- **Plugins**: Add dependencies in `package.json`
+- **Permissions**: Configure in `config.xml` as needed
+
 ## Usage Examples
 
 ### Creating a Business App
@@ -172,18 +239,45 @@ cordova platform remove android ios
 cordova platform add android ios
 ```
 
+## Publishing to NPM
+
+To make this template available via NPM:
+
+```bash
+# Login to NPM
+npm login
+
+# Publish the template
+npm publish
+
+# Users can then install with:
+npm install -g cordova-template-fidelidade
+cordova create MyApp com.example.app "My App" --template=cordova-template-fidelidade
+```
+
 ## License
 
-Apache-2.0 License
+Apache-2.0 License - Same as Apache Cordova
+
+## Contributing
+
+1. Fork this repository
+2. Create a feature branch: `git checkout -b feature/new-feature`
+3. Commit changes: `git commit -am 'Add new feature'`
+4. Push to branch: `git push origin feature/new-feature`
+5. Submit a Pull Request
 
 ## Support
 
 For issues and questions:
-- Create an issue in this repository
-- Check Cordova documentation: https://cordova.apache.org/docs/
-- OutSystems community: https://www.outsystems.com/community/
+
+- **Template Issues**: [Create an issue](https://github.com/premedios/fidelidade-cordova-app/issues) in this repository
+- **Cordova Documentation**: <https://cordova.apache.org/docs/>
+- **OutSystems Community**: <https://www.outsystems.com/community/>
 
 ---
 
-**Template Version**: 1.0.0  
-**Cordova Compatibility**: 12.0.0+
+**Template Version**: 2.0.0  
+**Template Structure**: Official Cordova Template Format  
+**Cordova Compatibility**: 12.0.0+  
+**Keywords**: `cordova:template`, `ecosystem:cordova`
