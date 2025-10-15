@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="$PACKAGE_NAME$" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>$APP_NAME$</name>
+<widget id="com.fidelidade.template" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Fidelidade Cordova App Template</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>

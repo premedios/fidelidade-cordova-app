@@ -35,14 +35,19 @@ fidelidade-cordova-app/
         └── img/logo.png  # Fidelidade logo asset
 ```
 
-### Template Placeholders
+### How Template Replacement Works
 
-The template uses Cordova's standard placeholder system:
+Cordova CLI automatically handles app configuration when using templates:
 
-- `$PACKAGE_NAME$` → Replaced with your app's package ID (e.g., `com.mycompany.myapp`)
-- `$APP_NAME$` → Replaced with your app's display name (e.g., `"My App"`)
+- The `cordova create` command uses the package ID and app name **you provide in the command**
+- The template's `config.xml` serves as the base configuration with OutSystems platform setup
+- Your specified app ID and name override the template's default values
 
-These placeholders are automatically replaced when using `cordova create` command.
+**Example:**
+```bash
+cordova create MyApp com.mycompany.myapp "My App Name" --template=github:premedios/fidelidade-cordova-app
+```
+Results in a new app with ID `com.mycompany.myapp` and name `"My App Name"`.
 
 ## Quick Start
 
@@ -157,7 +162,7 @@ The template includes an example of the preferred pattern for testing plugin fun
 ### Branding
 - **Colors**: Update the gradient in `www/css/index.css` (currently Fidelidade blue)
 - **Logo**: Replace `www/img/logo.png` with your company logo
-- **App Name**: Automatically handled by `$APP_NAME$` placeholder
+- **App Name**: Automatically handled by `cordova create` command parameters
 
 ### Configuration
 - **Platforms**: Modify `config.xml` for platform-specific settings

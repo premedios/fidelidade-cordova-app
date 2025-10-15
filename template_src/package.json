@@ -1,6 +1,6 @@
 {
-  "name": "$PACKAGE_NAME$",
-  "displayName": "$APP_NAME$",
+  "name": "com.fidelidade.template",
+  "displayName": "Fidelidade Cordova App Template",
   "version": "1.0.0",
   "description": "A Cordova application built with Fidelidade template and OutSystems platform support.",
   "main": "index.js",
