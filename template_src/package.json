@@ -1,8 +1,8 @@
 {
-  "name": "pt.fidelidade.app",
-  "displayName": "Fidelidade Cordova Test App",
+  "name": "$PACKAGE_NAME$",
+  "displayName": "$APP_NAME$",
   "version": "1.0.0",
-  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "description": "A Cordova application built with Fidelidade template and OutSystems platform support.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
