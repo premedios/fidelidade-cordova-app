@@ -152,8 +152,20 @@ The template includes an example of the preferred pattern for testing plugin fun
 
 ### Adding Your Own Plugin Tests
 
-1. **Uncomment the example button** or create new ones following the same pattern
-2. **Add event listeners** in `www/js/index.js` following the existing examples
+For detailed instructions on extending the template with your own plugin testing functionality, see the **[Development Guide](DEVELOPMENT.md)**.
+
+The development guide covers:
+
+- How to add new test buttons following the preferred pattern
+- JavaScript event handling and best practices
+- Using the comprehensive logging system
+- Plugin integration patterns and error handling
+- Complete examples and troubleshooting tips
+
+**Quick start:**
+
+1. **Follow the button pattern** shown in the commented HTML example
+2. **Add event listeners** in `www/js/index.js` using `setupEventListeners()`
 3. **Use the logging system** with `log()` function for real-time debugging
 4. **Test graceful fallbacks** when plugins are not available
 
