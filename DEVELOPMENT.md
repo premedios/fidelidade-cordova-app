@@ -87,93 +87,156 @@ Create handler functions following this pattern:
 
 ```javascript
 function handleMyPlugin() {
-    log('🔄 Testing my plugin...');
+    log('Testing my plugin...', 'loading');
     
     // Check if plugin is available
     if (typeof cordova !== 'undefined' && cordova.plugins && cordova.plugins.MyPlugin) {
-        log('✅ MyPlugin is available');
+        log('MyPlugin is available', 'plugin');
         
         try {
             cordova.plugins.MyPlugin.doSomething(
                 function(result) {
-                    log('✅ Plugin call successful');
-                    log('Result: ' + JSON.stringify(result));
+                    log('Plugin call successful', 'success');
+                    log('Result: ' + JSON.stringify(result), 'info');
                 },
                 function(error) {
-                    log('❌ Plugin call failed: ' + error);
+                    log('Plugin call failed: ' + error, 'error');
                 }
             );
         } catch (error) {
-            log('❌ Exception in handleMyPlugin: ' + error.message);
+            log('Exception in handleMyPlugin: ' + error.message, 'error');
         }
     } else {
-        log('⚠️ MyPlugin is not available');
+        log('MyPlugin is not available', 'warning');
         // Provide fallback or information
         alert('MyPlugin is not installed. Please add it with: cordova plugin add my-plugin');
     }
 }
 
 function handleAnotherFeature() {
-    log('🔄 Testing another feature...');
+    log('Testing another feature...', 'loading');
     
     // Example of testing device information
     if (typeof device !== 'undefined') {
-        log('✅ Device plugin available');
-        log('Platform: ' + device.platform);
-        log('Version: ' + device.version);
-        log('Model: ' + device.model);
+        log('Device plugin available', 'plugin');
+        log('Platform: ' + device.platform, 'device');
+        log('Version: ' + device.version, 'device');
+        log('Model: ' + device.model, 'device');
     } else {
-        log('⚠️ Device plugin not available');
+        log('Device plugin not available', 'warning');
     }
 }
 ```
 
 ## Logging System
 
-The template includes a comprehensive logging system for debugging and user feedback.
+The template includes a comprehensive logging system with automatic emoji assignment and color coding.
 
-### Basic Logging
+### Enhanced Log Function
 
-Use the `log()` function for all output:
+The `log()` function automatically assigns emojis and colors based on message type:
 
 ```javascript
-// Simple message
+/**
+ * Enhanced logging function with automatic emoji assignment
+ * @param {string} message - The message to log
+ * @param {string} [type] - Log type (optional, defaults to 'info')
+ * @param {string} [customEmoji] - Custom emoji when type is 'custom'
+ */
+log(message, type, customEmoji)
+```
+
+### Available Log Types
+
+The system automatically adds appropriate emojis - no need to include them in your message:
+
+```javascript
+// Information (default) - ℹ️
 log('App initialized');
+log('App initialized', 'info');
 
-// Success message with emoji
-log('✅ Operation completed successfully');
+// Success messages - ✅
+log('Operation completed successfully', 'success');
 
-// Warning message
-log('⚠️ Plugin not available');
+// Warnings - ⚠️
+log('Plugin not available', 'warning');
 
-// Error message
-log('❌ Operation failed');
+// Errors - ❌
+log('Operation failed', 'error');
 
-// Information with data
-log('📱 Platform: ' + cordova.platformId);
+// Loading/Progress - 🔄
+log('Processing request...', 'loading');
+
+// Plugin-related - 🔌
+log('Plugin detected', 'plugin');
+
+// Debug information - 🐛
+log('Debug data: ' + debugInfo, 'debug');
+
+// Configuration - ⚙️
+log('Config loaded', 'config');
+
+// Network operations - 🌐
+log('API request sent', 'network');
+
+// Device information - 📱
+log('Device platform detected', 'device');
+
+// Location services - 📍
+log('Location acquired', 'location');
+
+// Storage operations - 💾
+log('Data saved to storage', 'storage');
+
+// Notifications - 🔔
+log('Notification sent', 'notification');
+
+// Security operations - �
+log('Authentication successful', 'security');
+
+// Performance monitoring - ⚡
+log('Operation completed in 250ms', 'performance');
+
+// UI updates - 🎨
+log('Interface updated', 'ui');
+
+// API calls - 🔗
+log('External API called', 'api');
+
+// Custom messages with your own emoji
+log('Custom operation', 'custom');
+log('Special feature activated', 'custom', '🚀');
 ```
 
 ### Log Function Features
 
-The `log()` function automatically:
+The enhanced `log()` function automatically:
+
+- Adds appropriate emoji based on type
+- Applies color coding for better readability
 - Adds timestamp to each entry
-- Displays in the UI log area
+- Displays in the UI log area with CSS classes
 - Outputs to browser console
 - Scrolls to show latest entries
-- Handles long messages gracefully
+- Supports hover effects and animations
 
-### Log Categories and Emojis
+### Migration from Old System
 
-Use these emojis for consistent log categorization:
+If you have existing log calls with manual emojis, you can easily update them:
 
-| Category | Emoji | Example |
-|----------|-------|---------|
-| Process | 🔄 | `log('🔄 Loading data...')` |
-| Success | ✅ | `log('✅ Data loaded successfully')` |
-| Warning | ⚠️ | `log('⚠️ Plugin not available')` |
-| Error | ❌ | `log('❌ Network request failed')` |
-| Information | ℹ️ | `log('ℹ️ Using fallback method')` |
-| Data | 📱 | `log('📱 Device: ' + device.model)` |
+```javascript
+// Old way (still works)
+log('✅ Operation completed successfully');
+
+// New way (recommended)
+log('Operation completed successfully', 'success');
+
+// Old way
+log('❌ Something went wrong');
+
+// New way
+log('Something went wrong', 'error');
+```
 
 ### Advanced Logging Examples
 
@@ -488,10 +551,10 @@ function testGeolocation() {
     button.disabled = true;
     button.textContent = 'Getting Location...';
     
-    log('🔄 Testing geolocation...');
+    log('Testing geolocation...', 'loading');
     
     if (!navigator.geolocation) {
-        log('❌ Geolocation not supported by this device');
+        log('Geolocation not supported by this device', 'error');
         resetGeolocationButton();
         return;
     }
@@ -502,19 +565,19 @@ function testGeolocation() {
         maximumAge: 60000
     };
     
-    log('ℹ️ Geolocation options: ' + JSON.stringify(options));
+    log('Geolocation options: ' + JSON.stringify(options), 'config');
     
     navigator.geolocation.getCurrentPosition(
         function(position) {
-            log('✅ Geolocation success');
-            log('📱 Latitude: ' + position.coords.latitude);
-            log('📱 Longitude: ' + position.coords.longitude);
-            log('📱 Accuracy: ' + position.coords.accuracy + ' meters');
+            log('Geolocation success', 'success');
+            log('Latitude: ' + position.coords.latitude, 'location');
+            log('Longitude: ' + position.coords.longitude, 'location');
+            log('Accuracy: ' + position.coords.accuracy + ' meters', 'location');
             resetGeolocationButton();
         },
         function(error) {
-            log('❌ Geolocation error: ' + error.message);
-            log('ℹ️ Error code: ' + error.code);
+            log('Geolocation error: ' + error.message, 'error');
+            log('Error code: ' + error.code, 'debug');
             resetGeolocationButton();
         },
         options

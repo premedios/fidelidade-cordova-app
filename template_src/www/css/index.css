@@ -268,6 +268,94 @@ body {
     }
 }
 
+/* Log entry styling by type */
+.log-entry {
+    padding: 2px 0;
+    border-radius: 2px;
+    transition: background-color 0.2s ease;
+}
+
+.log-entry:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.log-success {
+    color: #27ae60;
+}
+
+.log-error {
+    color: #e74c3c;
+    font-weight: 500;
+}
+
+.log-warning {
+    color: #f39c12;
+}
+
+.log-loading {
+    color: #3498db;
+    animation: pulse 2s infinite;
+}
+
+.log-plugin {
+    color: #9b59b6;
+}
+
+.log-debug {
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+.log-config {
+    color: #34495e;
+}
+
+.log-network {
+    color: #1abc9c;
+}
+
+.log-device {
+    color: #e67e22;
+}
+
+.log-location {
+    color: #2ecc71;
+}
+
+.log-storage {
+    color: #8e44ad;
+}
+
+.log-notification {
+    color: #f1c40f;
+}
+
+.log-security {
+    color: #c0392b;
+}
+
+.log-performance {
+    color: #16a085;
+}
+
+.log-ui {
+    color: #e91e63;
+}
+
+.log-api {
+    color: #607d8b;
+}
+
+.log-custom {
+    color: #795548;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
 /* Dark mode support */
 @media screen and (prefers-color-scheme: dark) {
     body {
@@ -307,4 +395,27 @@ body {
         background: rgba(52, 152, 219, 0.2);
         color: #ecf0f1;
     }
+    
+    .log-entry:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Adjust log colors for dark mode */
+    .log-success { color: #2ecc71; }
+    .log-error { color: #e74c3c; }
+    .log-warning { color: #f39c12; }
+    .log-loading { color: #3498db; }
+    .log-plugin { color: #bb6bd9; }
+    .log-debug { color: #95a5a6; }
+    .log-config { color: #bdc3c7; }
+    .log-network { color: #1abc9c; }
+    .log-device { color: #e67e22; }
+    .log-location { color: #2ecc71; }
+    .log-storage { color: #9b59b6; }
+    .log-notification { color: #f1c40f; }
+    .log-security { color: #e74c3c; }
+    .log-performance { color: #16a085; }
+    .log-ui { color: #e91e63; }
+    .log-api { color: #90a4ae; }
+    .log-custom { color: #a1887f; }
 }
