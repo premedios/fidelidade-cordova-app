@@ -11,6 +11,13 @@
   ],
   "author": "premedios",
   "license": "Apache-2.0",
+  "scripts": {
+    "release": "./release.sh",
+    "release:patch": "./release.sh patch",
+    "release:minor": "./release.sh minor", 
+    "release:major": "./release.sh major",
+    "test:template": "cd /tmp && cordova create TestTemplate com.test.template 'Test Template' --template=file://$(pwd)"
+  },
   "engines": {
     "cordovaDependencies": {
       ">=9.0.0": {

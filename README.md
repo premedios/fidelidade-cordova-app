@@ -284,6 +284,13 @@ Apache-2.0 License - Same as Apache Cordova
 4. Push to branch: `git push origin feature/new-feature`
 5. Submit a Pull Request
 
+## Release Management
+
+For maintainers and contributors:
+
+- **Release Guide**: See [RELEASE.md](RELEASE.md) for complete release procedures
+- **Development Guide**: See [DEVELOPMENT.md](DEVELOPMENT.md) for extending the template
+
 ## Support
 
 For issues and questions:
