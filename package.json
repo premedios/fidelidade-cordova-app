@@ -21,7 +21,7 @@
   "engines": {
     "cordovaDependencies": {
       ">=9.0.0": {
-        "cordova-android": "github:OutSystems/cordova-android#13.0.0+1.1.0",
+        "cordova-android": "github:OutSystems/cordova-android#14.0.1+0.4.0",
         "cordova-ios": "github:OutSystems/cordova-ios#rel/7.0.1"
       }
     }
