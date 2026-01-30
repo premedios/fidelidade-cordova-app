@@ -15,10 +15,9 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-
-    <hook type="after_platform_add" src="hooks/setGradleDistribution.js" />
     
     <platform name="android">
+        <hook type="after_platform_add" src="hooks/setGradleDistribution.js" />
         <allow-intent href="market:*" />
         <preference name="android-compileSdkVersion" value="36" />
         <preference name="android-kotlinVersion" value="1.9.24" />
