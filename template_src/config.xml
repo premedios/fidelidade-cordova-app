@@ -15,9 +15,15 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+
+    <hook type="after_platform_add" src="hooks/setGradleDistribution.js" />
     
     <platform name="android">
         <allow-intent href="market:*" />
+        <preference name="android-compileSdkVersion" value="36" />
+        <preference name="android-kotlinVersion" value="1.9.24" />
+        <preference name="android-gradlePluginVersion" value="8.7.2" />
+        <preference name="AndroidXEnabled" value="true" />
     </platform>
     
     <platform name="ios">
