@@ -22,9 +22,13 @@
         <hook type="after_platform_add" src="hooks/setGradleDistribution.js" />
         <hook type="after_platform_add" src="hooks/fixXMLParser.js" />
         <allow-intent href="market:*" />
-        <preference name="android-compileSdkVersion" value="36" />
-        <preference name="android-kotlinVersion" value="1.9.24" />
-        <preference name="android-gradlePluginVersion" value="8.7.2" />
+        <preference name="android-minSdkVersion" value="28"/>
+        <preference name="android-targetSdkVersion" value="36"/>
+        <preference name="android-compileSdkVersion" value="36"/>
+        <preference name="android-buildToolsVersion" value="36.0.0"/>
+        <preference name="GradleVersion" value="8.11.1"/>
+        <preference name="AndroidGradlePluginVersion" value="8.9.1"/>
+        <preference name="GradlePluginKotlinVersion" value="2.2.0"/>
         <preference name="AndroidXEnabled" value="true" />
     </platform>
 
