@@ -1,5 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.fidelidade.template" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.fidelidade.template" version="1.0.0"
+    xmlns="http://www.w3.org/ns/widgets"
+    xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Fidelidade Cordova App Template</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -15,16 +17,17 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    
+
     <platform name="android">
         <hook type="after_platform_add" src="hooks/setGradleDistribution.js" />
+        <hook type="after_platform_add" src="hooks/fixXMLParser.js" />
         <allow-intent href="market:*" />
         <preference name="android-compileSdkVersion" value="36" />
         <preference name="android-kotlinVersion" value="1.9.24" />
         <preference name="android-gradlePluginVersion" value="8.7.2" />
         <preference name="AndroidXEnabled" value="true" />
     </platform>
-    
+
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />

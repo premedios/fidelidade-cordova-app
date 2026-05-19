@@ -90,3 +90,5 @@ jspm_packages/
 # Test apps created by template testing
 test-app/
 *-test/
+
+*._*
