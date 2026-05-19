@@ -12,8 +12,8 @@ const CORDOVA_GRADLE = path.join(
     "cordova.gradle",
 );
 
-// Matches "XMLParser" not already preceded by "xml.groovy."
-const XMLPARSER_PATTERN = /(?<!xml\.groovy\.)XMLParser/g;
+// Matches "XMLParser" (case-insensitive) not preceded by "." (excludes .XMLParser and xml.groovy.XMLParser)
+const XMLPARSER_PATTERN = /(?<!\.)XMLParser/gi;
 const XMLPARSER_REPLACEMENT = "xml.groovy.XMLParser";
 
 module.exports = function () {
@@ -24,13 +24,26 @@ module.exports = function () {
 
     const original = fs.readFileSync(CORDOVA_GRADLE, "utf8");
 
-    if (!XMLPARSER_PATTERN.test(original)) {
-        XMLPARSER_PATTERN.lastIndex = 0;
+    const updated = original
+        .split("\n")
+        .map((line) => {
+            const trimmed = line.trim();
+            // Skip comment lines
+            if (
+                trimmed.startsWith("//") ||
+                trimmed.startsWith("/*") ||
+                trimmed.startsWith("*")
+            ) {
+                return line;
+            }
+            return line.replace(XMLPARSER_PATTERN, XMLPARSER_REPLACEMENT);
+        })
+        .join("\n");
+
+    if (updated === original) {
+        console.log("XMLParser already fixed in cordova.gradle, skipping.");
         return;
     }
-    XMLPARSER_PATTERN.lastIndex = 0;
-
-    const updated = original.replace(XMLPARSER_PATTERN, XMLPARSER_REPLACEMENT);
 
     fs.writeFileSync(CORDOVA_GRADLE, updated, "utf8");
     console.log("Fixed XMLParser in CordovaLib/cordova.gradle");
