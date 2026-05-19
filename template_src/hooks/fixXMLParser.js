@@ -6,7 +6,6 @@ const path = require("path");
 const CORDOVA_GRADLE = path.join(
     __dirname,
     "..",
-    "..",
     "platforms",
     "android",
     "CordovaLib",
