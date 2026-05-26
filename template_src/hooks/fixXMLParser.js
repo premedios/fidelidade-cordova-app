@@ -14,7 +14,7 @@ const CORDOVA_GRADLE = path.join(
 
 // Matches "XMLParser" (case-insensitive) not preceded by "." (excludes .XMLParser and xml.groovy.XMLParser)
 const XMLPARSER_PATTERN = /(?<!\.)XMLParser/gi;
-const XMLPARSER_REPLACEMENT = "xml.groovy.XMLParser";
+const XMLPARSER_REPLACEMENT = "groovy.xml.XmlParser";
 
 module.exports = function () {
     if (!fs.existsSync(CORDOVA_GRADLE)) {
